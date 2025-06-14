@@ -11,7 +11,7 @@ Participantes:
 - Bianca Maia Ribeiro (BACKEND)
 - Gabriel Conte Rahmeier (FRONTEND)
 - Mariana Padilha dos Santos (DESIGN)
-- Miguel dos Santos Baggio (QA)
+- Miguel dos Santos Baggio (MODELAGEM DE NEGOCIO)
 - Ryan dos Santos Arruda (PITCH)
 
 ## Tema/ Área do problema
