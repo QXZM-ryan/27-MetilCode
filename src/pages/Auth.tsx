@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, MessageSquare } from "lucide-react";
+import { User, Lock, ArrowLeft, Sparkles } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const Auth = () => {
@@ -43,7 +41,6 @@ const Auth = () => {
       
       const { error } = await signUp(formData.email, formData.password, formData.name);
       if (!error) {
-        // User will need to confirm email before being able to login
         setIsLogin(true);
         setFormData({ name: "", email: "", password: "" });
       }
@@ -53,88 +50,125 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Link to="/" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors">
-          <ArrowLeft className="h-4 w-4 mr-2" />
+    <div className="min-h-screen animated-gradient flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse animation-delay-2000"></div>
+      </div>
+
+      <div className="w-full max-w-md relative z-10">
+        {/* Back to home link */}
+        <Link 
+          to="/" 
+          className="inline-flex items-center text-white/90 hover:text-white transition-colors mb-8 group"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
           Voltar ao início
         </Link>
-        
-        <Card className="shadow-xl border-0">
-          <CardHeader className="text-center pb-8">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-              <MessageSquare className="h-8 w-8 text-white" />
+
+        {/* Auth Card */}
+        <div className="glass-effect rounded-2xl shadow-2xl p-8 border border-white/20">
+          <div className="text-center mb-8">
+            <div className="relative mx-auto mb-6 w-16 h-16">
+              <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-4 rounded-2xl w-full h-full flex items-center justify-center shadow-xl">
+                <User className="h-8 w-8 text-white" />
+              </div>
+              <Sparkles className="absolute -top-1 -right-1 h-5 w-5 text-yellow-400 animate-pulse" />
             </div>
-            <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {isLogin ? "Login" : "Cadastro"}
-            </CardTitle>
-            <CardDescription>
-              {isLogin ? "Acesse sua conta para obter suporte" : "Crie sua conta para começar"}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {!isLogin && (
-                <div className="space-y-2">
-                  <Label htmlFor="name">Nome completo</Label>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              {isLogin ? "Bem-vindo de volta!" : "Criar sua conta"}
+            </h1>
+            <p className="text-gray-600 text-lg">
+              {isLogin ? "Entre em sua conta para continuar" : "Junte-se à nossa plataforma"}
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {!isLogin && (
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Nome Completo
+                </label>
+                <div className="relative group">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
                   <Input
-                    id="name"
                     type="text"
-                    placeholder="Seu nome"
+                    placeholder="Seu nome completo"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="transition-all focus:ring-2 focus:ring-blue-500"
+                    className="pl-10 h-12 bg-white/50 backdrop-blur-sm border-white/30 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                     required={!isLogin}
                   />
                 </div>
-              )}
-              
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+              </div>
+            )}
+            
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Email
+              </label>
+              <div className="relative group">
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
                 <Input
-                  id="email"
                   type="email"
                   placeholder="seu@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="transition-all focus:ring-2 focus:ring-blue-500"
+                  className="pl-10 h-12 bg-white/50 backdrop-blur-sm border-white/30 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   required
                 />
               </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="password">Senha</Label>
+            </div>
+            
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Senha
+              </label>
+              <div className="relative group">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
                 <Input
-                  id="password"
                   type="password"
                   placeholder="Sua senha"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="transition-all focus:ring-2 focus:ring-blue-500"
+                  className="pl-10 h-12 bg-white/50 backdrop-blur-sm border-white/30 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   required
                 />
               </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
-                disabled={isLoading}
-              >
-                {isLoading ? "Carregando..." : (isLogin ? "Entrar" : "Cadastrar")}
-              </Button>
-            </form>
-            
-            <div className="mt-6 text-center">
-              <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="text-blue-600 hover:text-blue-800 transition-colors"
-                type="button"
-              >
-                {isLogin ? "Não tem conta? Cadastre-se" : "Já tem conta? Faça login"}
-              </button>
             </div>
-          </CardContent>
-        </Card>
+            
+            <Button 
+              type="submit" 
+              className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold transition-all duration-300 btn-glow shadow-lg"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Carregando...
+                </div>
+              ) : (
+                isLogin ? "Entrar na minha conta" : "Criar minha conta"
+              )}
+            </Button>
+          </form>
+          
+          <div className="mt-8 text-center space-y-4">
+            {isLogin && (
+              <p className="text-sm text-gray-600 cursor-pointer hover:text-gray-800 transition-colors">
+                Esqueceu a senha?
+              </p>
+            )}
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-blue-600 hover:text-blue-800 transition-colors text-sm font-semibold underline underline-offset-4"
+              type="button"
+            >
+              {isLogin ? "Não tem conta? Cadastre-se aqui" : "Já tem conta? Entre aqui"}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
