@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+
+import { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,7 +33,6 @@ const SupportChat = () => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [support, setSupport] = useState<any>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -46,10 +46,6 @@ const SupportChat = () => {
     setSupport(JSON.parse(currentSupport));
     loadConversation();
   }, [navigate, userId]);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [conversation?.messages]);
 
   useEffect(() => {
     // Poll for new messages from user
@@ -333,7 +329,6 @@ const SupportChat = () => {
                       </div>
                     </div>
                   ))}
-                  <div ref={messagesEndRef} />
                 </div>
 
                 <div className="p-4 border-t bg-gray-50">
