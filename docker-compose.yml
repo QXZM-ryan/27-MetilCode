@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    restart: always
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASS=root
+      - DATABASE_URL=postgresql://postgres:root@db:5432/metilCodeDB
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: metilCodeDB
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
