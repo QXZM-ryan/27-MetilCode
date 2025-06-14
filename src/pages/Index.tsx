@@ -16,8 +16,17 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="text-center mb-16 space-y-6">
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/lovable-uploads/196209a6-18ce-430c-b0b0-f348db7f8471.png" 
+              alt="Logo Sistema de Suporte" 
+              className="h-24 w-auto drop-shadow-2xl"
+            />
+          </div>
+          
           <div className="relative inline-block">
-            <h1 className="text-6xl md:text-7xl font-bold gradient-text mb-6 float-animation">
+            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 float-animation">
               Sistema de Suporte
             </h1>
             <div className="absolute -top-4 -right-4">
