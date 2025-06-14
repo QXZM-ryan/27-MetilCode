@@ -1,5 +1,32 @@
+# Documentação
 
-# Sistema de Suporte com IA
+documentação para entrega final.
+
+## Equipe
+
+MetilCode
+
+Participantes:
+
+- Bianca Maia Ribeiro
+- Gabriel Conte Rahmeier
+- Mariana Padilha dos Santos
+- Miguel dos Santos Baggio
+- Ryan dos Santos Arruda
+
+## Tema/ Área do problema
+
+O tema central é suporte técnico eficiente, focando na automação de processos de atendimento ao cliente e resolução de problemas técnicos em empresas de tecnologia, SaaS ou helpdesk.
+
+## O problema a ser resolvido
+
+Atualmente, muitos sistemas de suporte técnico enfrentam filas de espera longas, triagem ineficiente e falta de comunicação em tempo real, resultando em frustração do cliente e alto custo operacional.
+
+## Descrição da solução proposta
+
+Um sistema de suporte técnico com triagem automática por IA que classifica e prioriza chamados conforme urgência e complexidade, integrado a um chat em tempo real entre cliente e técnico, agilizando a resolução e melhorando a experiência do usuário.
+
+## MetilChat
 
 Sistema de suporte técnico com triagem automática por IA e comunicação em tempo real.
 
@@ -33,6 +60,7 @@ Este projeto foi construído com:
 - shadcn-ui
 - Tailwind CSS
 - Supabase (para autenticação e banco de dados)
+- Gemini IA
 
 ## Funcionalidades
 
