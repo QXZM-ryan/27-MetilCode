@@ -8,11 +8,11 @@ MetilCode
 
 Participantes:
 
-- Bianca Maia Ribeiro
-- Gabriel Conte Rahmeier
-- Mariana Padilha dos Santos
-- Miguel dos Santos Baggio
-- Ryan dos Santos Arruda
+- Bianca Maia Ribeiro (BACKEND)
+- Gabriel Conte Rahmeier (FRONTEND)
+- Mariana Padilha dos Santos (DESIGN)
+- Miguel dos Santos Baggio (QA)
+- Ryan dos Santos Arruda (PITCH)
 
 ## Tema/ Área do problema
 
